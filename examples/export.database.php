@@ -26,14 +26,14 @@
 error_reporting(E_ALL | E_STRICT);
 ini_set('memory_limit', -1);
 
-// When exporting to the standard PHP output, ensure the browser expects a JSON-document
+// When exporting to the standard PHP output, ensure the browser expects a SQL-document
 if (!defined('STDIN'))
     header('Content-Type: text/sql');
 
 require '../lib/bootstrap.php';
 
 /**
- * This example shows how to export a DBC-file to JSON format
+ * This example shows how to export a DBC-file to SQL format
  */
 
 // Open given DBC and given map (ensure read-access on both)
@@ -49,11 +49,11 @@ foreach ($files as $key => $dbcName) {
             // Open the given DBC (ensure read-access)
             $dbc = new DBC('./dbcs/' . $dbcName, DBCMap::fromINI('./maps/' . strstr($dbcName, '.dbc', true) . '.ini'));
 
-            // Set up a new JSON exporter
-            $json = new DBCDatabaseExporter();
+            // Set up a new SQL exporter
+            $sql = new DBCDatabaseExporter();
 
             // Alternatively supports exporting to a file by providing a second argument
-            $json->export($dbc, './export/' . strstr($dbcName, '.dbc', true) . '.json');
+            $sql->export($dbc, './export/' . strstr($dbcName, '.dbc', true) . '.sql');
         } else {
             echo 'Skipping ';
         }
