@@ -78,7 +78,10 @@ class DBCJSONExporter implements IDBCExporter
             $data['records'][] = array_values($record->extract());
         }
 
-        file_put_contents($target, $this->_json_indent(json_encode($data)));
+        if(PHP_VERSION_ID > 50401)
+            file_put_contents($target, json_encode($data, JSON_PRETTY_PRINT));
+        else
+            file_put_contents($target, $this->_json_indent(json_encode($data)));
     }
 
     /**
@@ -90,7 +93,6 @@ class DBCJSONExporter implements IDBCExporter
      */
     private function _json_indent($json)
     {
-
         $result = '';
         $pos = 0;
         $strLen = strlen($json);
