@@ -41,7 +41,8 @@ class DBCJSONExporter implements IDBCExporter
      * @param DBC    $dbc
      * @param string $target
      *
-     * @return
+     * @throws DBCException
+     * @return void
      */
     public function export(DBC $dbc, $target = self::OUTPUT)
     {

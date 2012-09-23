@@ -26,20 +26,18 @@
 if (!defined('DBC_DIR')) {
     define('DBC_DIR', dirname(__FILE__));
 }
-if (!defined('DBC_DS')) {
-    define('DBC_DS', DIRECTORY_SEPARATOR);
-}
+
 if (!defined('DBC_EXPORT')) {
-    define('DBC_EXPORT', DBC_DIR . DBC_DS . 'exporters');
+    define('DBC_EXPORT', DBC_DIR . DIRECTORY_SEPARATOR . 'exporters');
 }
 
-require DBC_DIR . DBC_DS . 'DBC.class.php';
-require DBC_DIR . DBC_DS . 'DBCException.class.php';
-require DBC_DIR . DBC_DS . 'DBCExporter.interface.php';
-require DBC_DIR . DBC_DS . 'DBCIterator.class.php';
-require DBC_DIR . DBC_DS . 'DBCMap.class.php';
-require DBC_DIR . DBC_DS . 'DBCRecord.class.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBC.class.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBCException.class.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBCExporter.interface.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBCIterator.class.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBCMap.class.php';
+require DBC_DIR . DIRECTORY_SEPARATOR . 'DBCRecord.class.php';
 
-require DBC_EXPORT . DBC_DS . 'DBCDatabaseExporter.class.php';
-require DBC_EXPORT . DBC_DS . 'DBCJSONExporter.class.php';
-require DBC_EXPORT . DBC_DS . 'DBCXMLExporter.class.php';
+require DBC_EXPORT . DIRECTORY_SEPARATOR . 'DBCDatabaseExporter.class.php';
+require DBC_EXPORT . DIRECTORY_SEPARATOR . 'DBCJSONExporter.class.php';
+require DBC_EXPORT . DIRECTORY_SEPARATOR . 'DBCXMLExporter.class.php';

@@ -30,7 +30,6 @@ require '../lib/bootstrap.php';
 /**
  * This example shows how to generate a DBC mapping by sampling a given DBC
  */
-
 $files = scandir('./dbcs/');
 
 foreach ($files as $key => $dbcName) {
@@ -45,9 +44,6 @@ foreach ($files as $key => $dbcName) {
 
         // Dump the first record using the mappings
         echo $dbc->getRecordCount() . ' records.' . PHP_EOL;
-        // $dbc->getRecord(0)->dump(true);
-
-        // var_dump($map);
 
         $map->toINI('./maps/' . strstr($dbcName, '.dbc', true) . '.ini');
     }

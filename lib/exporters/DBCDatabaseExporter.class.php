@@ -127,6 +127,7 @@ class DBCDatabaseExporter implements IDBCExporter
      * @param DBC $dbc
      * @param string $target
      * @param string $table
+     * @throws DBCException
      * @return string
      */
     public function export(DBC $dbc, $target = self::OUTPUT, $table = 'dbc')

@@ -35,10 +35,6 @@ require '../lib/bootstrap.php';
 /**
  * This example shows how to export a DBC-file to XML format
  */
-
-// Open given DBC and given map (ensure read-access on both)
-// $dbc = new DBC('./dbcs/Sample.dbc', DBCMap::fromINI('./maps/Sample.ini'));
-
 $files = scandir('./dbcs/');
 
 foreach ($files as $key => $dbcName) {

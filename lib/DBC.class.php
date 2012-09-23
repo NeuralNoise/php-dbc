@@ -141,7 +141,6 @@ class DBC implements IteratorAggregate
     {
         if (!is_file($path)) {
             throw new DBCException('DBC "' . $path . '" could not be found');
-            return;
         }
 
         $this->_path = $path;
@@ -152,7 +151,6 @@ class DBC implements IteratorAggregate
             $this->_writable = false;
             if (!$this->_handle) {
                 throw new DBCException('DBC "' . $path . '" is not readable');
-                return;
             }
         }
         $size = filesize($path);
@@ -164,7 +162,6 @@ class DBC implements IteratorAggregate
         }
         if ($size < self::HEADER_SIZE) {
             throw new DBCException('DBC "' . $path . '" has a malformed header');
-            return;
         }
 
         list(, $this->_recordCount, $this->_fieldCount, $this->_recordSize, $this->_stringBlockSize) = unpack(self::UINT . '4', fread($this->_handle, 16));
@@ -173,13 +170,11 @@ class DBC implements IteratorAggregate
 
         if ($size < $offset) {
             throw new DBCException('DBC "' . $path . '" is short of ' . ($offset - $size) . ' bytes for ' . $this->_recordCount . ' records');
-            return;
         }
         fseek($this->_handle, $offset);
 
         if ($size < $offset + $this->_stringBlockSize) {
             throw new DBCException('DBC "' . $path . '" is short of ' . ($offset + $this->_stringBlockSize - $size) . ' bytes for string-block');
-            return;
         }
         $this->_stringBlock = fread($this->_handle, $this->_stringBlockSize);
 
@@ -228,7 +223,6 @@ class DBC implements IteratorAggregate
             $delta = $map->getFieldCount() - $this->getFieldCount();
             if ($delta !== 0) {
                 throw new DBCException('Mapping holds ' . $map->getFieldCount() . ' fields, but DBC "' . $this->_path . '" expects ' . $this->getfieldCount());
-                return $this;
             }
             $this->_map = clone $map;
         }
@@ -266,7 +260,6 @@ class DBC implements IteratorAggregate
     {
         if (!$this->_writable || $this->_map === null) {
             throw new DBCException('Adding records requires DBC "' . $this->_path . '" to be writable and have a valid mapping attached');
-            return $this;
         }
 
         $args = func_get_args();
@@ -458,7 +451,6 @@ class DBC implements IteratorAggregate
     {
         if (!$this->_writable) {
             throw new DBCException('Adding strings requires DBC "' . $this->path . '" to be writable');
-            return 0;
         }
         $offset = strlen($this->_stringBlock);
         $this->_stringBlock .= $string . self::NULL_BYTE;
@@ -481,7 +473,6 @@ class DBC implements IteratorAggregate
         $handle = @fopen($file, 'w+b');
         if (!$handle) {
             throw new DBCException('New DBC "' . $file . '" could not be created/opened for writing');
-            return null;
         }
 
         $map = null;

@@ -157,7 +157,6 @@ class DBCRecord
                 $field = $map->getFieldOffset($field);
             } else {
                 throw new DBCException('Addressing fields through string values requires DBC "' . $this->_dbc->getPath() . '" to have a valid mapping attached');
-                return null;
             }
         }
 
@@ -183,7 +182,6 @@ class DBCRecord
     {
         if (!$this->_dbc->isWritable()) {
             throw new DBCException('Modifying records requires DBC "' . $this->_dbc->getPath() . '" to be writable');
-            return $this;
         }
 
         if (is_string($field)) {
@@ -191,7 +189,6 @@ class DBCRecord
                 $field = $map->getFieldOffset($field);
             } else {
                 throw new DBCException('Addressing fields through string values requires DBC "' . $this->_dbc->getPath() . '" to have a valid mapping attached');
-                return $this;
             }
         }
 

@@ -42,7 +42,8 @@ class DBCXMLExporter implements IDBCExporter
      * Exports given DBC in XML format to given target (defaults to output stream)
      * @param DBC $dbc
      * @param string $target
-     * @return
+     * @throws DBCException
+     * @return void
      */
     public function export(DBC $dbc, $target = self::OUTPUT)
     {
