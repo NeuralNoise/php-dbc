@@ -49,7 +49,7 @@ foreach ($files as $key => $dbcName) {
             $sql = new DBCDatabaseExporter();
 
             // Alternatively supports exporting to a file by providing a second argument
-            $sql->export($dbc, './export/' . strstr($dbcName, '.dbc', true) . '.sql');
+            $sql->export($dbc, './export/' . strstr($dbcName, '.dbc', true) . '.sql', strstr($dbcName, '.dbc', true));
         } else {
             echo 'Skipping ';
         }

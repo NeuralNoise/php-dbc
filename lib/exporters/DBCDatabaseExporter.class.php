@@ -137,7 +137,6 @@ class DBCDatabaseExporter implements IDBCExporter
         $map = $dbc->getMap();
         if ($map === null) {
             throw new DBCException(self::NO_MAP);
-            return;
         }
 
         $sql = fopen($target, 'w+');
