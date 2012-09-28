@@ -168,7 +168,7 @@ class DBCDatabaseExporter implements IDBCExporter
         fwrite($sql, "CREATE TABLE " . $table . " (" . PHP_EOL . implode(', ' . PHP_EOL, $dd) . ', ' . PHP_EOL . '  PRIMARY KEY (`' . key($fields) . '`) ' . PHP_EOL . ');' . PHP_EOL . PHP_EOL);
         foreach ($dbc as $i => $record) {
             if ($i % $this->recordsPerQuery === 0) {
-                fwrite($sql, "INSERT INTO " . $table . " VALUES " . PHP_EOL . " (");
+                fwrite($sql, "INSERT INTO " . $table . " VALUES " . PHP_EOL . "  (");
             } else {
                 fwrite($sql, "," . PHP_EOL . "  (");
             }
